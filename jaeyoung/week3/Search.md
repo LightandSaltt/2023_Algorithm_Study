@@ -76,29 +76,29 @@ k번째 시행 후에는 (1/2)^k * N 이 된다.
 구현은 **반복문**과 **재귀** 두 가지 방법으로 구현이 가능하다.
 ### 반복문
 ```java
-public static int binarySearch(int arr[], int find) {
-  int mid;
-  int left = 0;
-  int right = arr.length - 1;
-
-  // 배열의 크기가 1이 될 때까지 반복.
-  while (left <= right) {
-    mid = (right + left) / 2;
+    public static int binarySearch(int arr[], int find) {
+      int mid;
+      int left = 0;
+      int right = arr.length - 1;
     
-    if (arr[mid] == find) {
-      return mid;
+      // 배열의 크기가 1이 될 때까지 반복.
+      while (left <= right) {
+        mid = (right + left) / 2;
+        
+        if (arr[mid] == find) {
+          return mid;
+        }
+    
+        if (find < arr[mid]) {
+          right = mid - 1;
+        } else {
+          left = mid + 1;
+        }
+      }
+    
+      // 원하는 값을 찾지 못함.
+      return -1;
     }
-
-    if (find < arr[mid]) {
-      right = mid - 1;
-    } else {
-      left = mid + 1;
-    }
-  }
-
-  // 원하는 값을 찾지 못함.
-  return -1;
-}
 ```
 ### 재귀
 ```java
